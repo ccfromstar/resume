@@ -1,6 +1,5 @@
 $(function() {
 	var c = new Coder("style-text");
-	var w = new Coder("work-text");
 	c.load("<p><div class='bef_comment writecode'>/**</div>");
 	c.load("<div class='bef_comment writecode'>&nbsp;*</div>");
 	c.load("<div class='bef_comment writecode'>&nbsp;*hi,我的名字叫陈辰，是上海一家互联网创业公司的软件工程师</div>");
@@ -40,11 +39,11 @@ $(function() {
 	c.load("<div class='bef_comment writecode'>&nbsp;*在这整个页面里写代码让人有些不舒服</div>");
 	c.load("<div class='bef_comment writecode'>&nbsp;*我准备创建一个区域来更好的显示我的代码</div>");
 	c.load("<div class='bef_comment writecode'>&nbsp;*/</div></p>");
-	c.load("<p><div class='code writecode'><span class='bef_selector'>pre:not(:empty)</span> {</div>");
-	c.load("<div class='code writecode'>&nbsp;<span class='bef_key'>overflow</span>: <span class='bef_value'>auto</span>;</div>");
+	c.load("<p><div class='code writecode'><span class='bef_selector'>pre</span><span class='bef_key'>:not(:empty)</span> {</div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='bef_key'>overflow</span>: <span class='bef_value'>hidden</span>;</div>");
 	c.setClass("pre:not(:empty)", [{
 		"name": "overflow",
-		"val": "auto"
+		"val": "hidden"
 	}]);
 	c.load("<div class='code writecode'>&nbsp;<span class='bef_key'>background</span>: <span class='bef_value'>rgb(48, 48, 48)</span>;</div>");
 	c.setClass("pre:not(:empty)", [{
@@ -133,24 +132,24 @@ $(function() {
 	c.load("<div class='comment writecode'>&nbsp;*现在我们差不多都准备好了</div>");
 	c.load("<div class='comment writecode'>&nbsp;*让我们最后再来做一些3D旋转</div>");
 	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
-	c.load("<p><div class='code writecode'><span class='selector'>body</span> {</div>");
+	c.load("<p><div class='code writecode'><span class='selector'>#content</span> {</div>");
   	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-perspective</span>: <span class='value'>1000<span class='px'>px</span></span>;</div>");
-  	/*c.setClass("body", [{
+  	c.setClass("#content", [{
 		"name": "-webkit-perspective",
 		"val": "1000px"
-	}]);*/
+	}]);
   	c.load("<div class='code writecode'>}</div></p>");
   	c.load("<p><div class='code writecode'><span class='selector'>#style-text</span> {</div>");
   	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform</span>: <span class='value'>translateX(98.5%) rotateY(-10deg)</span>;</div>");
-  	/*c.setClass("#style-text", [{
+  	c.setClass("#style-text", [{
 		"name": "-webkit-transform",
 		"val": "translateX(98.5%) rotateY(-10deg)"
-	}]);*/
+	}]);
 	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform-origin</span>: <span class='value'>right</span>;</div>");
-  	/*c.setClass("#style-text", [{
+  	c.setClass("#style-text", [{
 		"name": "-webkit-transform-origin",
 		"val": "right"
-	}]);*/
+	}]);
 	c.load("<div class='code writecode'>&nbsp;<span class='key'>max-height</span>: <span class='value'>94.5%</span>;</div>");
   	c.setClass("#style-text", [{
 		"name": "max-height",
@@ -162,7 +161,14 @@ $(function() {
 	c.load("<div class='comment writecode'>&nbsp;*我相信你来这不只是为了看这些漂亮的颜色</div>");
 	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
 	c.addClass("#work-text","pre_work-text");
-	w.load("<h1 class='writecode'>个人简历</h1>");
+	c.load("<p><div class='code writecode'><span class='selector'>pre</span><span class='key'>:not(#style-text)</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform</span>: <span class='value'>rotateY(10deg)</span>;</div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform-origin</span>: <span class='value'>left</span>;</div>");
+	c.load("<div class='code writecode'>}</div></p>");
+	var r = new Coder("work-text");
+	r.load("<div id='md'></div>");
+	var w = new Coder("md");
+	w.load("<h1 class='writecode'>简历</h1>");
 	w.load("<p><div class='writecode'>陈辰</div>");
 	w.load("<div class='writecode'>软件工程师(上海荟邮网络科技有限公司)</div>");
 	w.load("<div class='writecode'>前端/NodeJS 开发工程师</div></p>");
@@ -171,7 +177,6 @@ $(function() {
 	w.load("<li class='writecode'>mail:114413511@qq.com</li>");
 	w.load("<li class='writecode'>blog:<a href='http://blog.youlunshidai.com' target='_blank'>blog.youlunshidai.com</a></li>");
 	w.load("<li class='writecode'>github:<a href='https://github.com/ccfromstar' target='_blank'>https://github.com/ccfromstar</a></li>");
-	w.load("<li class='writecode'>简书:<a href='http://http://www.jianshu.com/users/f0e995b95f0e/latest_articles' target='_blank'>www.jianshu.com/users/f0e995b95f0e</a></li>");
 	w.load("</ul>");
 	w.load("<h1 class='writecode'>技能</h1>");
 	w.load("<ul>");
@@ -182,21 +187,89 @@ $(function() {
 	w.load("<li class='writecode'>熟练Mysql,redis,mongodb和文档型数据库(domino)</li>");
 	w.load("<li class='writecode'>熟练windows server,linux服务器部署和管理，及常见问题的处理</li>");
 	w.load("<li class='writecode'>熟练svn,git等常用版本管理工具</li>");
-	w.load("<li class='writecode'>熟练网络爬虫技术</li>");
-	w.load("<li class='writecode'>了解h5 app开发方式</li>");
 	w.load("<li class='writecode'>有过BPM办公自动化流程引擎的开发经验</li>");
-	w.load("<li class='writecode'>较强的学习能力，对于新技术有强烈的求知欲</li>");
-	w.load("<li class='writecode'>能带领几个人的小团队完成较大型项目的开发</li>");
-	w.load("<li class='writecode'>对建筑，旅游，餐饮，汽配行业的业务比较熟悉</li>");
 	w.load("</ul>");
 	w.load("<h1 class='writecode'>项目</h1>");
 	w.load("<ul>");
 	w.load("<li class='writecode'><a href='http://www.huiyoulun.com' target='_blank'>www.huiyoulun.com</a></li>");
 	w.load("<li class='writecode'><a href='http://www.youlunshidai.com' target='_blank'>www.youlunshidai.com</a></li>");
 	w.load("<li class='writecode'><a href='http://wap.huiyoulun.com' target='_blank'>wap.huiyoulun.com</a></li>");
-	w.load("<li class='writecode'><a href='http://http://www.4000191177.com' target='_blank'>www.4000191177.com</a></li>");
+	w.load("<li class='writecode'><a href='http://www.4000191177.com' target='_blank'>www.4000191177.com</a></li>");
+	w.load("<li class='writecode'><a href='http://jianianhua.youlunshidai.com/' target='_blank'>jianianhua.youlunshidai.com</a></li>");
 	w.load("</ul>");
-	
+	c.load("<p><div class='comment writecode'>/**</div>");
+	c.load("<div class='comment writecode'>&nbsp;*左面的简历看起来不是太令人满意，让我们先给他来点动态渲染</div>");
+	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#work-text</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform</span>: <span class='value'>rotateX(0deg) rotateY(190deg) rotateZ(180deg)</span>;</div>");
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#work-text #md</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>-webkit-transform</span>: <span class='value'>rotateY(190deg) rotateZ(180deg)</span>;</div>");
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='comment writecode'>/**</div>");
+	c.load("<div class='comment writecode'>&nbsp;*好了，让我们准备</div>");
+	c.load("<div class='comment writecode'>&nbsp;*</div>");
+	c.load("<div class='comment writecode'>&nbsp;*3....</div>");
+	c.load("<div class='comment writecode'>&nbsp;*2....</div>");
+	c.load("<div class='comment writecode'>&nbsp;*1....</div>");
+	c.load("<div class='comment writecode'>&nbsp;*</div>");
+	c.load("<div class='comment writecode'>&nbsp;*.</div>");
+	c.load("<div class='comment writecode'>&nbsp;*</div>");
+	c.load("<div class='comment writecode'>&nbsp;*差不多了，让我们的简历动起来！</div>");
+	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
+	c.setClass("#work-text", [{
+		"name": "-webkit-transform",
+		"val": "rotateX(0deg) rotateY(190deg) rotateZ(180deg)"
+	}]);
+	c.setClass("#work-text #md", [{
+		"name": "-webkit-transform",
+		"val": "rotateY(190deg) rotateZ(180deg)"
+	}]);
+	c.load("<p><div class='comment writecode'>/**</div>");
+	c.load("<div class='comment writecode'>&nbsp;*对于文本，我们可以再做一点微调</div>");
+	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#md</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>font-family</span>: <span class='value'>'Helvetica Neue', Helvetica, sans-serif</span>;</div>");
+	c.setClass("#md", [{
+		"name": "font-family",
+		"val": "'Helvetica Neue', Helvetica, sans-serif"
+	}]);
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#md h1</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>border-bottom</span>: <span class='value'>1px solid #ccc</span>;</div>");
+	c.setClass("#md h1", [{
+		"name": "border-bottom",
+		"val": "1px solid #ccc"
+	}]);
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>padding-bottom</span>: <span class='value'>5px</span>;</div>");
+	c.setClass("#md h1", [{
+		"name": "padding-bottom",
+		"val": "5px"
+	}]);
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#md li</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>margin</span>: <span class='value'>5<span class='px'>px</span> 0</span>;</div>");
+	c.setClass("#md li", [{
+		"name": "margin",
+		"val": "5px 0"
+	}]);
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='code writecode'><span class='selector'>#md h1,#md ul</span> { </div>");
+	c.load("<div class='code writecode'>&nbsp;<span class='key'>margin</span>: <span class='value'>0</span>;</div>");
+	c.setClass("#md h1,#md ul", [{
+		"name": "margin",
+		"val": "0"
+	}]);
+	c.load("<div class='code writecode'>}</div></p>");
+	c.load("<p><div class='comment writecode'>/**</div>");
+	c.load("<div class='comment writecode'>&nbsp;*这样基本上就差不多了</div>");
+	c.load("<div class='comment writecode'>&nbsp;*");
+	c.load("<div class='comment writecode'>&nbsp;*如果你想和我联系</div>");
+	c.load("<div class='comment writecode'>&nbsp;*QQ/微信:114413511</div>");
+	c.load("<div class='comment writecode'>&nbsp;*mobile:13611847679</div>");
+	c.load("<div class='comment writecode'>&nbsp;*最后非常感谢您愿意花3分钟看完我的简历！</div>");
+	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
+
 });
 
 var m = 0;

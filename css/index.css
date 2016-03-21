@@ -19,7 +19,7 @@
 }
 
 .pre_work-text {
-	overflow: auto;
+	overflow: hidden;
 	background: rgb(48, 48, 48);
 	border: 1px solid #ccc;
 	max-height: 94.5%;
@@ -30,6 +30,8 @@
 	box-shadow: -4px 4px 2px 0 rgba(0, 0, 0, 0.3);
 	white-space: pre-wrap;
 	outline: 0;
+	-webkit-transform:rotateY(10deg);
+	-webkit-transform-origin: left;
 }
 
 	.pre_work-text a{
@@ -43,8 +45,8 @@
 .writecode {
 	overflow: hidden;
 	white-space: nowrap;
-	animation: coder 3s;
-	-webkit-animation: coder 3s;
+	animation: coder 2s;
+	-webkit-animation: coder 2s;
 }
 
 @keyframes coder {
@@ -62,4 +64,29 @@
 	right: 0;
 	left: 0;
 	bottom: 20px;
+}
+
+/*定义滚动条样式*/
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar  
+{  
+    width: 0.01rem;  
+    height: 0.01rem;  
+    background-color: #fff;  
+}  
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track  
+{  
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);  
+    border-radius: 0.1rem;  
+    background-color: #fff;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 0.1rem;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #fff;  
 }
